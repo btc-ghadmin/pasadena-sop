@@ -1,0 +1,9 @@
+{
+  "name": "Beyond The Classroom",
+  "tagline": "Inviting children to learn beyond the boundaries of the classroom",
+  "address": "304 Pasadena Avenue, South Pasadena, CA 91030",
+  "director": "Samantha Montes, M.Ed.",
+  "version": "1.0",
+  "trainingFormUrl": "https://forms.gle/REPLACE_WITH_YOUR_FORM",
+  "pathPrefix": "/pasadena-sop/"
+}

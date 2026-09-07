@@ -1,0 +1,54 @@
+{% extends "base.njk" %}
+{% block content %}
+<header class="sec-head">
+  <span class="eyebrow-num">{{ order | pad2 }}</span>
+  <h1>{{ title }}</h1>
+</header>
+
+{% if tags %}
+<div class="tag-row">
+  {%- for t in tags %}
+  <span class="tag-pill" data-pagefind-filter="tag:{{ t }}">{{ t }}</span>
+  {%- endfor %}
+</div>
+{% endif %}
+
+{% if video %}
+<div class="video-wrap">
+  <iframe src="{{ video | youtubeEmbed }}" title="{{ title }} video" frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe>
+</div>
+{% endif %}
+
+<div class="sec-body">
+{{ content | safe }}
+</div>
+
+{% if site.trainingFormUrl %}
+<div class="complete-row">
+  <a class="complete-btn" href="{{ site.trainingFormUrl }}" target="_blank" rel="noopener">
+    Confirm you've read "{{ title }}" →
+  </a>
+</div>
+{% endif %}
+
+<section class="comments" aria-label="Comments">
+  <h2 class="comments-heading">Comments</h2>
+  <script src="https://giscus.app/client.js"
+    data-repo="YOUR-ORG/YOUR-REPO"
+    data-repo-id="REPLACE_WITH_REPO_ID"
+    data-category="General"
+    data-category-id="REPLACE_WITH_CATEGORY_ID"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="light"
+    data-lang="en"
+    crossorigin="anonymous"
+    async>
+  </script>
+</section>
+{% endblock %}

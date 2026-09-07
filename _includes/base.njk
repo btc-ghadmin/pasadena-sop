@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="color-scheme" content="light only">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ title }} — {{ site.name }}</title>
+<link rel="icon" href="{{ '/assets/favicon.png' | url }}" type="image/png">
+<link rel="apple-touch-icon" href="{{ '/assets/apple-touch-icon.png' | url }}">
+<link rel="stylesheet" href="{{ '/assets/style.css' | url }}">
+<link href="{{ '/pagefind/pagefind-ui.css' | url }}" rel="stylesheet">
+</head>
+<body>
+<div class="shell">
+  <nav class="side" id="sideNav">
+    <a href="{{ '/' | url }}" class="brand-link">
+      <img src="{{ '/assets/tree-icon.png' | url }}" alt="" class="brand-logo">
+      <p class="brand">{{ site.name }}</p>
+      <p class="brand-sub">Standard Operating Procedures</p>
+    </a>
+
+    <div id="search" class="search-box"></div>
+
+    <ul class="nav-list">
+      {%- for item in collections.sections %}
+      <li>
+        <a href="{{ item.url | url }}" {% if item.url == page.url %}class="active"{% endif %}>
+          <span class="nav-num">{{ item.data.order | pad2 }}</span>{{ item.data.title }}
+        </a>
+      </li>
+      {%- endfor %}
+    </ul>
+    <div class="side-foot">
+      Version {{ site.version }}<br>
+      Edit any page on GitHub — click the pencil icon on the file.
+    </div>
+  </nav>
+
+  <main data-pagefind-body>
+    {% block content %}{% endblock %}
+    <footer class="doc-foot">
+      Internal document — not for public distribution. Review and re-approve annually or after any incident that changes procedure.
+    </footer>
+  </main>
+</div>
+
+<script src="{{ '/pagefind/pagefind-ui.js' | url }}"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    new PagefindUI({ element: "#search", showSubResults: true, showImages: false, resetStyles: false });
+  });
+</script>
+</body>
+</html>

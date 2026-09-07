@@ -1,0 +1,21 @@
+---
+title: Home
+permalink: /index.html
+---
+{% extends "base.njk" %}
+{% block content %}
+<header class="hero">
+  <p class="hero-eyebrow">{{ site.tagline }}</p>
+  <h1>How we run the program, every day, the same way</h1>
+  <p>This is the operating manual for {{ site.name }}, an afterschool program serving South Pasadena families. It covers what staff do from arrival to dismissal, how we keep kids safe, and who to call when something goes wrong. Use the search box in the sidebar to jump straight to a topic.</p>
+</header>
+
+<div class="index-grid">
+  {%- for item in collections.sections %}
+  <a class="index-card" href="{{ item.url | url }}">
+    <span class="eyebrow-num">{{ item.data.order | pad2 }}</span>
+    <span>{{ item.data.title }}</span>
+  </a>
+  {%- endfor %}
+</div>
+{% endblock %}

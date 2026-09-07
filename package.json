@@ -1,0 +1,13 @@
+{
+  "name": "sop-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "eleventy && npx pagefind --site _site",
+    "serve": "eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "pagefind": "^1.1.0"
+  }
+}
