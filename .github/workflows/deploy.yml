@@ -1,5 +1,3 @@
-.github/workflows/deploy.yml
-
 name: Build and deploy SOP site
 
 on:
